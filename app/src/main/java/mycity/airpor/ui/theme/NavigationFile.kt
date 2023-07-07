@@ -14,11 +14,11 @@ fun NavigationFile() {
     NavHost(navController = navHostController, startDestination = ScreenDestination.OneScreen.endpoint){
 
         composable(route = ScreenDestination.OneScreen.endpoint){
-            OneScreen()
+            OneScreen(navHostController)
         }
 
         composable(route = ScreenDestination.TwoScreen.endpoint){
-            TwoScreen()
+            TwoScreen(navHostController)
         }
 
         composable(route = ScreenDestination.ThreeScreen.endpoint){
