@@ -17,7 +17,6 @@ import mycity.airpor.R
 fun OneScreen(navHostController: NavHostController){
 
 
-
     LaunchedEffect(Unit){
         delay(1500)
         navHostController.navigate(ScreenDestination.TwoScreen.endpoint)

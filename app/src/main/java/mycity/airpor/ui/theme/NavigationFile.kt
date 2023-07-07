@@ -26,7 +26,13 @@ fun NavigationFile() {
         }
 
         composable(route = ScreenDestination.FourScreen.endpoint){
+            //Rules
             FourScreen()
+        }
+
+        composable(route = ScreenDestination.FiveScreen.endpoint){
+            //Game
+
         }
     }
 }

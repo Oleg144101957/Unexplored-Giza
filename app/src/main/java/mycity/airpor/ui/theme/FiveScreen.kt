@@ -4,7 +4,9 @@ import androidx.compose.runtime.Composable
 
 
 @Composable
-fun FourScreen() {
-    //Rules
+fun FiveScreen(){
+    //Game play
+
+
 
 }
