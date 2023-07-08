@@ -37,7 +37,7 @@ fun TwoScreen(navHostController: NavHostController) {
         )
         
         Image(
-            painter = painterResource(id = R.drawable.element_11),
+            painter = painterResource(id = R.drawable.im_11),
             contentDescription = "light",
             modifier = Modifier
                 .align(Alignment.Center)
@@ -47,7 +47,7 @@ fun TwoScreen(navHostController: NavHostController) {
         )
 
         Image(
-            painter = painterResource(id = R.drawable.element_12),
+            painter = painterResource(id = R.drawable.im_12),
             contentDescription = "god",
             modifier = Modifier
                 .align(Alignment.BottomCenter)
@@ -64,7 +64,7 @@ fun TwoScreen(navHostController: NavHostController) {
                 .padding(4.dp)
             ){
                 Image(
-                    painter = painterResource(id = R.drawable.element_15),
+                    painter = painterResource(id = R.drawable.im_15),
                     contentDescription = "btn_background",
                     modifier = Modifier
                         .align(Alignment.Center)
@@ -87,7 +87,7 @@ fun TwoScreen(navHostController: NavHostController) {
                 .padding(4.dp)
             ){
                 Image(
-                    painter = painterResource(id = R.drawable.element_15),
+                    painter = painterResource(id = R.drawable.im_15),
                     contentDescription = "btn_background",
                     modifier = Modifier
                         .align(Alignment.Center)
@@ -110,7 +110,7 @@ fun TwoScreen(navHostController: NavHostController) {
                 .padding(4.dp)
             ){
                 Image(
-                    painter = painterResource(id = R.drawable.element_15),
+                    painter = painterResource(id = R.drawable.im_15),
                     contentDescription = "btn_background",
                     modifier = Modifier
                         .align(Alignment.Center)
