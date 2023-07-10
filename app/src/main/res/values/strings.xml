@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Unexplored Giza</string>
+    <string name="rules">You must arrange the elements in four columns, each column must contain the same elements. Hurry You only have 60 seconds</string>
 </resources>
