@@ -1,6 +1,11 @@
 package mycity.airpor.ui.theme
 
+import android.app.Activity
 import android.content.Context
+import android.content.pm.ActivityInfo
+import androidx.activity.compose.ManagedActivityResultLauncher
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.FastOutLinearInEasing
 import androidx.compose.animation.core.RepeatMode
@@ -46,6 +51,12 @@ fun FiveScreen(viewModel: GameViewModel){
     //Game play
 
     val context = LocalContext.current
+
+    val activity = LocalContext.current as Activity
+    activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+
+
+
     val sharedPref = context.getSharedPreferences(Constants.SHARED_PREF, Context.MODE_PRIVATE)
     val sharedName = sharedPref.getString(Constants.SHARED_NAME, "Lucky User") ?: "Lucky user"
     val userName = remember {
