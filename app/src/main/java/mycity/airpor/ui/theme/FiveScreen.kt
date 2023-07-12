@@ -95,11 +95,13 @@ fun FiveScreen(viewModel: GameViewModel){
         }
     }
 
-    Box(modifier = Modifier.fillMaxSize()){
+    Box(modifier = Modifier
+        .fillMaxSize()){
         Image(
             painter = painterResource(id = R.drawable.back_1080_1920),
             contentDescription = "main back",
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier
+                .fillMaxSize(),
             contentScale = ContentScale.FillBounds
         )
 
@@ -243,7 +245,6 @@ fun FiveScreen(viewModel: GameViewModel){
 
                     }
             )
-
         }
     }
 }

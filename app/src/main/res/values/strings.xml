@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Unexplored Giza</string>
     <string name="rules">You must arrange the elements in four columns, each column must contain the same elements. Hurry You only have 60 seconds</string>
+    <string name="secret">\nYou can put all the elements into Columns and then within 60 seconds you will be able to move to the next level</string>
+    <string name="unex">Unexplored</string>
+    <string name="rulesbtn">Rules</string>
+    <string name="settings">Settings</string>
+    <string name="playgame">Play Game</string>
 </resources>

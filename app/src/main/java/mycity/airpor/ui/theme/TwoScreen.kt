@@ -18,6 +18,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
@@ -81,7 +82,7 @@ fun TwoScreen(navHostController: NavHostController) {
                 )
                 
                 Text(
-                    text = "Play Game",
+                    text = stringResource(id = R.string.playgame),
                     fontSize = 32.sp,
                     color = Color.White,
                     modifier = Modifier
@@ -104,7 +105,7 @@ fun TwoScreen(navHostController: NavHostController) {
                 )
 
                 Text(
-                    text = "Settings",
+                    text = stringResource(id = R.string.settings),
                     fontSize = 32.sp,
                     color = Color.White,
                     modifier = Modifier
@@ -127,7 +128,30 @@ fun TwoScreen(navHostController: NavHostController) {
                 )
 
                 Text(
-                    text = "Rules",
+                    text = stringResource(id = R.string.rulesbtn),
+                    fontSize = 32.sp,
+                    color = Color.White,
+                    modifier = Modifier
+                        .align(Alignment.Center)
+                )
+            }
+
+            Box(modifier = Modifier
+                .fillMaxWidth()
+                .padding(4.dp)
+            ){
+                Image(
+                    painter = painterResource(id = R.drawable.im_15),
+                    contentDescription = "btn_background",
+                    modifier = Modifier
+                        .align(Alignment.Center)
+                        .clickable {
+                            navHostController.navigate(ScreenDestination.SixScreen.endpoint)
+                        }
+                )
+
+                Text(
+                    text = stringResource(id = R.string.unex),
                     fontSize = 32.sp,
                     color = Color.White,
                     modifier = Modifier

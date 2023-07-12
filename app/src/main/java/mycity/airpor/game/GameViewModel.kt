@@ -1,5 +1,6 @@
 package mycity.airpor.game
 
+import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.delay
@@ -15,58 +16,58 @@ class GameViewModel : ViewModel() {
     val win : MutableStateFlow<Boolean> = MutableStateFlow(false)
 
     val elementsList : MutableStateFlow<List<Element>> = MutableStateFlow(mutableListOf(
-        Element(0, R.drawable.im_8),
-        Element(1, R.drawable.im_6),
-        Element(2, R.drawable.im_7),
-        Element(3, R.drawable.im_5),
+        Element(0, R.drawable.im_8, ElementShape.Rectangle, Color.White),
+        Element(1, R.drawable.im_6, ElementShape.Triangle, Color.Red),
+        Element(2, R.drawable.im_7, ElementShape.Triangle, Color.Green),
+        Element(3, R.drawable.im_5, ElementShape.Triangle, Color.Yellow),
 
-        Element(4, R.drawable.im_8),
-        Element(5, R.drawable.im_5),
-        Element(6, R.drawable.im_6),
-        Element(7, R.drawable.im_5),
+        Element(4, R.drawable.im_8, ElementShape.Triangle, Color.DarkGray),
+        Element(5, R.drawable.im_5, ElementShape.Triangle, Color.Green),
+        Element(6, R.drawable.im_6, ElementShape.Triangle, Color.Red),
+        Element(7, R.drawable.im_5, ElementShape.Triangle, Color.Yellow),
 
-        Element(8, R.drawable.im_7),
-        Element(9, R.drawable.im_8),
-        Element(10, R.drawable.im_7),
-        Element(11, R.drawable.im_6),
+        Element(8, R.drawable.im_7, ElementShape.Triangle, Color.Yellow),
+        Element(9, R.drawable.im_8, ElementShape.Triangle, Color.Red),
+        Element(10, R.drawable.im_7, ElementShape.Triangle, Color.Yellow),
+        Element(11, R.drawable.im_6, ElementShape.Triangle, Color.Green),
 
-        Element(12, R.drawable.im_7),
-        Element(13, R.drawable.im_8),
-        Element(14, R.drawable.im_6),
-        Element(15, R.drawable.im_5),
+        Element(12, R.drawable.im_7, ElementShape.Triangle, Color.Yellow),
+        Element(13, R.drawable.im_8, ElementShape.Triangle, Color.Yellow),
+        Element(14, R.drawable.im_6, ElementShape.Triangle, Color.Green),
+        Element(15, R.drawable.im_5, ElementShape.Triangle, Color.Yellow),
 
-        Element(16, R.drawable.im_5),
-        Element(17, R.drawable.im_7),
-        Element(18, R.drawable.im_5),
-        Element(19, R.drawable.im_8),
+        Element(16, R.drawable.im_5, ElementShape.Triangle, Color.White),
+        Element(17, R.drawable.im_7, ElementShape.Triangle, Color.Yellow),
+        Element(18, R.drawable.im_5, ElementShape.Triangle, Color.Green),
+        Element(19, R.drawable.im_8, ElementShape.Triangle, Color.Yellow),
 
-        Element(20, R.drawable.im_6),
-        Element(21, R.drawable.im_6),
-        Element(22, R.drawable.im_7),
-        Element(23, R.drawable.im_8),
+        Element(20, R.drawable.im_6, ElementShape.Triangle, Color.Yellow),
+        Element(21, R.drawable.im_6, ElementShape.Triangle, Color.Yellow),
+        Element(22, R.drawable.im_7, ElementShape.Triangle, Color.Red),
+        Element(23, R.drawable.im_8, ElementShape.Triangle, Color.Yellow),
 
-        Element(24, R.drawable.im_8),
-        Element(25, R.drawable.im_7),
-        Element(26, R.drawable.im_6),
-        Element(27, R.drawable.im_5),
+        Element(24, R.drawable.im_8, ElementShape.Triangle, Color.Yellow),
+        Element(25, R.drawable.im_7, ElementShape.Triangle, Color.Yellow),
+        Element(26, R.drawable.im_6, ElementShape.Triangle, Color.White),
+        Element(27, R.drawable.im_5, ElementShape.Triangle, Color.Yellow),
 
-        Element(28, R.drawable.im_5),
-        Element(29, R.drawable.im_6),
-        Element(30, R.drawable.im_7),
-        Element(31, R.drawable.im_8),
+        Element(28, R.drawable.im_5, ElementShape.Triangle, Color.Yellow),
+        Element(29, R.drawable.im_6, ElementShape.Triangle, Color.Green),
+        Element(30, R.drawable.im_7, ElementShape.Triangle, Color.Green),
+        Element(31, R.drawable.im_8, ElementShape.Triangle, Color.White),
 
-        Element(32, R.drawable.im_5),
-        Element(33, R.drawable.im_8),
-        Element(34, R.drawable.im_6),
-        Element(35, R.drawable.im_8),
+        Element(32, R.drawable.im_5, ElementShape.Triangle, Color.Green),
+        Element(33, R.drawable.im_8, ElementShape.Triangle, Color.Yellow),
+        Element(34, R.drawable.im_6, ElementShape.Triangle, Color.Red),
+        Element(35, R.drawable.im_8, ElementShape.Triangle, Color.Yellow),
 
-        Element(36, R.drawable.im_5),
-        Element(37, R.drawable.im_6),
-        Element(38, R.drawable.im_7),
-        Element(39, R.drawable.im_7)
+        Element(36, R.drawable.im_5, ElementShape.Triangle, Color.Yellow),
+        Element(37, R.drawable.im_6, ElementShape.Triangle, Color.Green),
+        Element(38, R.drawable.im_7, ElementShape.Triangle, Color.Yellow),
+        Element(39, R.drawable.im_7, ElementShape.Triangle, Color.Red)
     ))
 
-    val originalElementsList: List<Element> = elementsList.value.toList()
+    private val originalElementsList: List<Element> = elementsList.value.toList()
 
 
     fun swapElementLeft(element: Int){
