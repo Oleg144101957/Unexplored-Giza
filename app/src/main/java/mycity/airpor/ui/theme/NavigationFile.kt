@@ -24,7 +24,7 @@ fun NavigationFile() {
         }
 
         composable(route = ScreenDestination.ThreeScreen.endpoint){
-            ThreeScreen()
+            ThreeScreen(navHostController)
         }
 
         composable(route = ScreenDestination.FourScreen.endpoint){

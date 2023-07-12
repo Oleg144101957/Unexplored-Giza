@@ -66,6 +66,8 @@ class GameViewModel : ViewModel() {
         Element(39, R.drawable.im_7)
     ))
 
+    val originalElementsList: List<Element> = elementsList.value.toList()
+
 
     fun swapElementLeft(element: Int){
         val swapPosition = element - 1
@@ -185,6 +187,10 @@ class GameViewModel : ViewModel() {
         }
 
 
+    }
+
+    fun recoverList(){
+        elementsList.value = originalElementsList.toMutableList()
     }
 
 

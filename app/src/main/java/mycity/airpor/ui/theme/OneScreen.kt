@@ -1,5 +1,7 @@
 package mycity.airpor.ui.theme
 
+import android.app.Activity
+import android.content.pm.ActivityInfo
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.FastOutLinearInEasing
 import androidx.compose.animation.core.RepeatMode
@@ -17,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavHostController
 import kotlinx.coroutines.delay
@@ -28,6 +31,10 @@ import mycity.airpor.game.Constants
 fun OneScreen(navHostController: NavHostController){
 
     val alpha = remember { Animatable(1f) }
+
+
+    val activity = LocalContext.current as Activity
+    activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
 
     LaunchedEffect(Unit){

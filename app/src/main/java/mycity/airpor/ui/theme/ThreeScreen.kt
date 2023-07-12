@@ -2,7 +2,7 @@ package mycity.airpor.ui.theme
 
 import android.content.Context
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -25,13 +25,14 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import mycity.airpor.R
 import mycity.airpor.game.Constants
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ThreeScreen() {
+fun ThreeScreen(navHostController: NavHostController) {
 
     val context = LocalContext.current
     val sharedPref = context.getSharedPreferences(Constants.SHARED_PREF, Context.MODE_PRIVATE)
@@ -83,9 +84,30 @@ fun ThreeScreen() {
                 }
             )
 
+            Spacer(modifier = Modifier.height(96.dp))
 
+            Box(modifier = Modifier
+                .align(Alignment.CenterHorizontally)
+            ){
+                Image(
+                    painter = painterResource(id = R.drawable.im_15),
+                    contentDescription = "btn back",
+                    modifier = Modifier
+                        .align(Alignment.Center)
+                        .clickable {
+                            navHostController.navigate(ScreenDestination.TwoScreen.endpoint)
+                        }
+                )
 
-
+                Text(
+                    text = "Save",
+                    fontFamily = Constants.lemonFont,
+                    color = Color.White,
+                    modifier = Modifier.align(
+                        Alignment.Center
+                    )
+                )
+            }
         }
     }
 }

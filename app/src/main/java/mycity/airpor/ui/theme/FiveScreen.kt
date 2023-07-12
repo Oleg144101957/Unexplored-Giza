@@ -12,6 +12,7 @@ import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.layout.Box
@@ -102,12 +103,7 @@ fun FiveScreen(viewModel: GameViewModel){
             contentScale = ContentScale.FillBounds
         )
 
-        Text(
-            text = userName.value,
-            color = Color.White,
-            modifier = Modifier
-                .align(Alignment.TopCenter)
-        )
+
 
         Image(
             painter = painterResource(id = R.drawable.im_3),
@@ -120,6 +116,13 @@ fun FiveScreen(viewModel: GameViewModel){
             .fillMaxWidth()
             .align(Alignment.BottomCenter)
         ) {
+
+            Text(
+                text = userName.value,
+                color = Color.White,
+                modifier = Modifier
+                    .align(Alignment.CenterHorizontally)
+            )
 
             Box(modifier = Modifier.fillMaxWidth()){
                 Image(
@@ -226,14 +229,21 @@ fun FiveScreen(viewModel: GameViewModel){
 
         if (win.value){
             Text(
-                text = "You win !!!",
-                fontSize = 48.sp,
+                text = "You win, go to the next level",
+                fontSize = 16.sp,
                 fontFamily = Constants.lemonFont,
                 color = Color.Yellow,
                 modifier = Modifier
                     .align(Alignment.BottomCenter)
                     .padding(bottom = 64.dp)
+                    .background(Color.DarkGray)
+                    .clickable {
+                        time.value = 30
+                        viewModel.recoverList()
+
+                    }
             )
+
         }
     }
 }
