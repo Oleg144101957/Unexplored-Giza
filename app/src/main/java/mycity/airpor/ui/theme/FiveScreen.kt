@@ -78,6 +78,10 @@ fun FiveScreen(viewModel: GameViewModel){
         }
     }
 
+    LaunchedEffect(Unit){
+        time.value = 59
+    }
+
 
 
     LaunchedEffect(Unit){
