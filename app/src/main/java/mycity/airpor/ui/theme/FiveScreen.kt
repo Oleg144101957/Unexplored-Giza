@@ -71,7 +71,12 @@ fun FiveScreen(viewModel: GameViewModel){
         mutableStateOf(59)
     }
 
-    LaunchedEffect(key1 = "timer"){
+
+    val timerLauncher = remember {
+        mutableStateOf(false)
+    }
+
+    LaunchedEffect(key1 = timerLauncher.value){
         while (time.value>0){
             delay(1000)
             time.value -= 1
