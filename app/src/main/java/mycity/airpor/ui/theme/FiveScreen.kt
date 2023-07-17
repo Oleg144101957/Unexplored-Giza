@@ -57,7 +57,6 @@ fun FiveScreen(viewModel: GameViewModel){
     activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
 
-
     val sharedPref = context.getSharedPreferences(Constants.SHARED_PREF, Context.MODE_PRIVATE)
     val sharedName = sharedPref.getString(Constants.SHARED_NAME, "Lucky User") ?: "Lucky user"
     val userName = remember {
@@ -251,7 +250,7 @@ fun FiveScreen(viewModel: GameViewModel){
                     .clickable {
                         time.value = 30
                         viewModel.recoverList()
-
+                        viewModel.makeWinValueFalse()
                     }
             )
         }

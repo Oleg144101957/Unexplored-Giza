@@ -194,5 +194,9 @@ class GameViewModel : ViewModel() {
         elementsList.value = originalElementsList.toMutableList()
     }
 
+    fun makeWinValueFalse(){
+        win.value = false
+    }
+
 
 }
