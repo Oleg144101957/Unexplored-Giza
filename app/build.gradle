@@ -65,6 +65,15 @@ dependencies {
     debugImplementation 'androidx.compose.ui:ui-tooling'
     debugImplementation 'androidx.compose.ui:ui-test-manifest'
 
+    implementation project(path: ':app:mylibrary')
+
+    implementation 'io.github.pilgr:paperdb:2.7.2'
+
+    //Tracking
+    implementation 'com.onesignal:OneSignal:[4.0.0, 4.99.99]'
+    implementation 'com.appsflyer:af-android-sdk:6.12.0'
+    implementation 'com.facebook.android:facebook-android-sdk:16.1.3'
+    implementation 'com.google.android.gms:play-services-ads-identifier:18.0.1'
 
     //Navigation
     implementation 'androidx.navigation:navigation-compose:2.6.0'

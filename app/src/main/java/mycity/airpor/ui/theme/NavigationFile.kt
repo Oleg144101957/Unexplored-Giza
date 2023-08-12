@@ -43,5 +43,11 @@ fun NavigationFile() {
             //Unexplored Giza
             SixScreen(navHostController)
         }
+
+        composable(route = ScreenDestination.SevenScreen.endpoint){
+            //Unexplored Giza
+            SevenScreen(navHostController)
+        }
+
     }
 }

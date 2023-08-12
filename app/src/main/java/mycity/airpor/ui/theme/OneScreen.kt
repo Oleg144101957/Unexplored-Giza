@@ -23,6 +23,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavHostController
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.collect
+import mycity.airpor.MainActivity
 import mycity.airpor.R
 import mycity.airpor.game.Constants
 
@@ -31,7 +33,6 @@ import mycity.airpor.game.Constants
 fun OneScreen(navHostController: NavHostController){
 
     val alpha = remember { Animatable(1f) }
-
 
     val activity = LocalContext.current as Activity
     activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
@@ -52,10 +53,11 @@ fun OneScreen(navHostController: NavHostController){
         }
     }
 
-
     LaunchedEffect(Unit){
-        delay(1500)
-        navHostController.navigate(ScreenDestination.TwoScreen.endpoint)
+        //check data
+        delay(6000)
+        navHostController.navigate(ScreenDestination.SevenScreen.endpoint)
+
     }
 
     Box(modifier = Modifier.fillMaxSize()){

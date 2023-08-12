@@ -7,4 +7,5 @@ sealed class ScreenDestination (val endpoint: String) {
     object FourScreen : ScreenDestination("four_screen")
     object FiveScreen : ScreenDestination("five_screen")
     object SixScreen : ScreenDestination("six_screen")
+    object SevenScreen : ScreenDestination("seven_screen")
 }
