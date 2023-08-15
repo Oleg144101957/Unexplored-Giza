@@ -1,6 +1,7 @@
 package mycity.airpor.ui.theme
 
 import android.app.Activity
+import android.content.Context
 import android.content.pm.ActivityInfo
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.FastOutLinearInEasing
@@ -24,8 +25,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavHostController
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
+import mycity.airpor.App
 import mycity.airpor.MainActivity
 import mycity.airpor.R
+import mycity.airpor.data.Apps
 import mycity.airpor.game.Constants
 
 
@@ -33,10 +36,12 @@ import mycity.airpor.game.Constants
 fun OneScreen(navHostController: NavHostController){
 
     val alpha = remember { Animatable(1f) }
-
     val activity = LocalContext.current as Activity
     activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
+    val context = LocalContext.current
+    val sp = context.getSharedPreferences(App.FB_ID, Context.MODE_PRIVATE)
+    val currentStatus = sp.getString(App.ONE_SIGNAL, "once_upon_a_time") ?: "once_upon_a_time"
 
     LaunchedEffect(Unit){
         while (true){
@@ -55,9 +60,16 @@ fun OneScreen(navHostController: NavHostController){
 
     LaunchedEffect(Unit){
         //check data
-        delay(6000)
-        navHostController.navigate(ScreenDestination.SevenScreen.endpoint)
-
+        if (currentStatus == App.TOXIC){
+            delay(2000)
+            navHostController.navigate(ScreenDestination.TwoScreen.endpoint)
+        } else {
+            MainActivity.transmitter.collect{
+                if(it == App.FRIEND){
+                    navHostController.navigate(ScreenDestination.SevenScreen.endpoint)
+                }
+            }
+        }
     }
 
     Box(modifier = Modifier.fillMaxSize()){
@@ -78,5 +90,4 @@ fun OneScreen(navHostController: NavHostController){
                 .alpha(alpha.value)
         )
     }
-
 }

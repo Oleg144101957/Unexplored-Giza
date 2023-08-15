@@ -20,5 +20,10 @@ class App : Application() {
         const val ONE_SIGNAL = "c328c55a-26da-41cc-8c41-3743093010e2"
         const val FB_ID = "1089529798687794"
         const val FB_SECRET_TOKEN = "4be6f6cff415f6f6f29a92cfeeeb662d"
+        const val FRIEND = "FRIEND"
+        const val TOXIC = "TOXIC"
+        const val STATUS = "STATUS"
+        const val SERVICEDEV = "SERVICEDEV"
+        const val BROADCASTDEV = "BROADCASTDEV"
     }
 }

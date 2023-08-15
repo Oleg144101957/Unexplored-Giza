@@ -1,5 +1,6 @@
 package mycity.airpor.ui.theme
 
+import android.webkit.WebView
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
@@ -9,7 +10,7 @@ import mycity.airpor.game.GameViewModel
 
 
 @Composable
-fun NavigationFile() {
+fun NavigationFile(backPress : (w: WebView) -> Unit) {
 
     val navHostController = rememberNavController()
 
@@ -36,7 +37,6 @@ fun NavigationFile() {
             //Game
             val viewModel = viewModel<GameViewModel>()
             FiveScreen(viewModel)
-
         }
 
         composable(route = ScreenDestination.SixScreen.endpoint){
@@ -46,8 +46,7 @@ fun NavigationFile() {
 
         composable(route = ScreenDestination.SevenScreen.endpoint){
             //Unexplored Giza
-            SevenScreen(navHostController)
+            SevenScreen(backPress)
         }
-
     }
 }

